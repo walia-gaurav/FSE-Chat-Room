@@ -59,7 +59,7 @@ io.on('connection', function(socket) {
     socket.on('inputMessage', function(msg) {
 
         console.log('Received input: ' + msg + ' from ' + socket.id);
-        //socket.broadcast.emit('inputMessage', msg);
+        //socket.broadcast.emit('inputMessage', msg); 
         io.emit('inputMessage', msg);
 
         db.serialize(function() {
