@@ -1,0 +1,41 @@
+          * {
+              box-sizing: content-box;
+              margin: 0;
+              padding: 0;
+          }
+          body {
+              font: 13px Helvetica, Arial;
+          }
+          form {
+              background: #B8B8B8;
+              bottom: 0;
+              padding: 2px;
+              position: fixed;
+              width: 20em;
+          }
+          form input {
+              border: 0;
+              padding: 10px;
+              width: 92%;
+          }
+          form button {
+              background: rgb(130, 224, 255);
+              border: none;
+              padding: 10px;
+          }
+          #messages li {
+              padding: 5px 10px;
+          }
+          #messages li:nth-child(odd) {
+              background: #eee;
+          }
+          #messages {
+              border: 1px solid #ccc;
+              height: 30em;
+              line-height: 2em;
+              margin: 0;
+              overflow: scroll;
+              overflow-x: hidden;
+              padding: 0;
+              width: 20em;
+          }
