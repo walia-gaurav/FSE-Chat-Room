@@ -28,6 +28,7 @@
             socket.connect();
             $('#chatroom').show();
             $('#logout').show();
+            $('#username').show();
             $('#username').text('Hi ' + $('#m1').val() + '!')
             $('#login').hide();
 
