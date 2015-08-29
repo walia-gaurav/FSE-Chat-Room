@@ -14,7 +14,8 @@
             var atom = {
                 what: $('#m').val(),
                 who: $('#m1').val(),
-                when: (new Date).toUTCString()
+                //when: (new Date).toUTCString()
+                when: (new Date).getTime()
             }
             socket.emit('inputMessage', JSON.stringify(atom));
             $('#m').val('');
@@ -44,12 +45,16 @@
     function showPageOne() {
         $('#chatroom').hide();
         $('#logout').hide();
+        $('#username').hide();
         $('#login').show();
         $('#m1').val('');
     }
 
     function prepareChatBubble(emittedAtom) {
-        var when = "<li><div style=\"color:grey; text-align:center; font-size:x-small\">" + emittedAtom.when + "</div>";
+
+        var d = new Date(0); // The 0 there is the key, which sets the date to the epoch
+        d.setUTCMilliseconds(emittedAtom.when);
+        var when = "<li><div style=\"color:grey; text-align:center; font-size:x-small\">" + d.toString() + "</div>";
         var who = "<div style=\"color:Red; text-align:center; font-size:x-small\">" + emittedAtom.who + "</div>";
         var what = "<div style=\"font-size:small\">" + emittedAtom.what + "</div></li>";
         $('#messages').append(when + who + what);

@@ -1,39 +1,24 @@
 doctype html
 html
   head
+    title FSE ChatRoom
+    link(rel='stylesheet', type='text/css', href='chatroom.css')
     script(src='/socket.io/socket.io.js')
     script(src='http://code.jquery.com/jquery-1.11.1.js')
-
-    script.
-      var socket = io();
-
-      function OnSubmit(){
-
-        socket.emit('inputMessage', $('#m').val());
-
-        /* To prevent an emit-all call, better to print it at origin.
-        Not sure how to handle with db insert. Else move back to using io.emit / io.sockets.emit */
-
-        $('#messages').append($('<li>').text($('#m').val()));
-      }
-
-      socket.on('inputMessage', function(msg){
-        $('#messages').append($('<li>').text(msg));
-      });
-
-    title FSE ChatRoom
-    
-    style.
-      * { margin: 0; padding: 0; box-sizing: border-box; }
-      body { font: 13px Helvetica, Arial; }
-      form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
-      form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
-      form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
-      #messages { list-style-type: none; margin: 0; padding: 0; }
-      #messages li { padding: 5px 10px; }
-      #messages li:nth-child(odd) { background: #eee; }
+    script(src='chatroom.js')
   body
-    ul#messages
-    form(action='')
-      input#m(autocomplete='off')
-      input#idSubmit(type='button', name='submitChat', value='Send!', onclick='OnSubmit();')
+    div(style='margin-right:auto; margin-left:auto;')
+      form(action='', onsubmit='return false')
+        #login(style='text-align:center')
+          | What do we call you?
+          input#m1(style='text-align:center', autocomplete='off')
+          input#loginButton(type='submit', value='Enter chatroom!', onclick="OnSubmit('fromLogin');")
+        #logout(style='text-align:center')
+          div(style='float:left')
+            input(type='submit', value='Logout', onclick="OnSubmit('fromLogout');")
+        #username(style='float:right')
+        #chatroom
+          p
+          ul#messages
+          input#m(autocomplete='off')
+          input#sendButton(type='submit', value='Send!', onclick="OnSubmit('fromChatWindow');")
