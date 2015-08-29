@@ -1,41 +1,42 @@
-          * {
-              box-sizing: content-box;
-              margin: 0;
-              padding: 0;
-          }
-          body {
-              font: 13px Helvetica, Arial;
-          }
-          form {
-              background: #B8B8B8;
-              bottom: 0;
-              padding: 2px;
-              position: fixed;
-              width: 20em;
-          }
-          form input {
-              border: 0;
-              padding: 10px;
-              width: 92%;
-          }
-          form button {
-              background: rgb(130, 224, 255);
-              border: none;
-              padding: 10px;
-          }
-          #messages li {
-              padding: 5px 10px;
-          }
-          #messages li:nth-child(odd) {
-              background: #eee;
-          }
-          #messages {
-              border: 1px solid #ccc;
-              height: 30em;
-              line-height: 2em;
-              margin: 0;
-              overflow: scroll;
-              overflow-x: hidden;
-              padding: 0;
-              width: 20em;
-          }
+  * {
+      font-family: Century Gothic, sans-serif;
+      padding: 0;
+  }
+  form,
+  #name {
+      background: #E0F8F7;
+      bottom: 0;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 2px;
+      position: center;
+      width: 40%;
+  }
+  form input {
+      border: 0;
+      padding: 10px;
+      width: 95%;
+  }
+  ul {
+      background: white;
+  }
+  li {
+      background: lightblue;
+      border: 5px solid white;
+      border-radius: 20px;
+      padding: 5px 5px;
+  }
+  #messages div {
+      padding-left: 5%;
+  }
+  #messages li:nth-child(odd) {} 
+
+  #messages {
+      border: 1px solid #ccc;
+      height: 30em;
+      line-height: 15px;
+      margin: 0;
+      overflow: scroll;
+      overflow-x: hidden;
+      padding: 0;
+  }

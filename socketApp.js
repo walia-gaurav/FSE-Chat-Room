@@ -44,9 +44,11 @@ io.on('connection', function(socket) {
     console.log(socket.handshake.address + ' ' + socket.id + ' connected');
 
     db.serialize(function() {
+
+            if (exists) {
         db.each("SELECT rowid AS id, thing FROM ChatHistory", function(err, row) {
             socket.emit('inputMessage', row.thing);
-        });
+        });}
     });
 
     socket.on('disconnect', function() {

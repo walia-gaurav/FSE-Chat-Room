@@ -5,33 +5,34 @@
       <link rel="stylesheet" type="text/css" href="chatroom.css">
       <script src="/socket.io/socket.io.js"></script>
       <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
-      <script>
-         var socket = io();
-         
-         function OnSubmit(){
-         
-           //send it to server
-           socket.emit('inputMessage', $('#m').val());
-           
-           /* To prevent an emit-all call, better to print it at origin.
-           Not sure how to handle with db insert. Else move back to using io.emit / io.sockets.emit */
-           //$('#messages').append($('<li>').text($('#m').val()));
-         
-           //clear the chat field
-           $('#m').val('');
-         }
-         
-         socket.on('inputMessage', function(msg){
-           $('#messages').append($('<li>').text(msg));
-           $('#messages').scrollTop($('#messages')[0].scrollHeight);
-         });
-      </script>
+      <script src="chatroom.js"></script>
    </head>
    <body>
-      <form action="" onsubmit="return false">
-         <ul id="messages"></ul>
-         <input id="m" autocomplete="off" />
-         <input type="submit" value="Send!" onclick="OnSubmit();" />
-      </form>
+      <div style="margin-right:auto; margin-left:auto;">
+         <form action="" onsubmit="return false" >
+
+            <div id="login" style="text-align:center"> What do we call you?
+               <input style="text-align:center" id="m1" autocomplete="off" />
+               <input id="loginButton" type="submit" value="Enter chatroom!" onclick="OnSubmit('fromLogin');" />
+            </div>
+
+            <div id="logout" style="text-align:center">
+               <div style="float:left">
+                  <input type="submit" value="Logout" onclick="OnSubmit('fromLogout');" />
+               </div>
+               <div id="username" style="float:right">
+               </div>
+            </div>
+
+            <div id="chatroom">
+               <p></p>
+               <ul id="messages"></ul>
+               <input id="m" autocomplete="off" />
+               <input id="sendButton" type="submit" value="Send!" onclick="OnSubmit('fromChatWindow');" />
+            </div>
+
+         </form>
+      </div>
    </body>
 </html>
+
