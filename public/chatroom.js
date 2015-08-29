@@ -14,7 +14,6 @@
             var atom = {
                 what: $('#m').val(),
                 who: $('#m1').val(),
-                //when: (new Date).toUTCString()
                 when: (new Date).getTime()
             }
             socket.emit('inputMessage', JSON.stringify(atom));
@@ -35,7 +34,7 @@
         } else if (from == "fromLogout") {
             socket.disconnect();
             showPageOne();
-        }
+        } 
     }
 
 
