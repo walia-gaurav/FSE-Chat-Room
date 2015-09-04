@@ -16,10 +16,10 @@ app.get('/ping', function(req, res) {
 
 /* Actual get URL to fetch CHAT window. */
 app.get('/chat', function(req, res) {
-    res.sendFile(__dirname + '/index.html');
+    //res.sendFile(__dirname + '/index.html');
 
     /* That's how I rock jade, man! */
-    //res.render(__dirname + '/index.jade');
+    res.render(__dirname + '/index.jade');
 });
 
 //Database declaration shit starts

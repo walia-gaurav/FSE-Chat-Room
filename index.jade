@@ -1,24 +1,29 @@
 doctype html
 html
   head
+    meta(name='description', content='FSE Chatroom Ramp up assignment for Carnegie Mellon University')
+    meta(name='author', content='gaurav.walia@cmu.edu')
     title FSE ChatRoom
+    link(rel='icon', href='favicon.png')
     link(rel='stylesheet', type='text/css', href='style.css')
-    script(src='/socket.io/socket.io.js')
-    script(src='http://code.jquery.com/jquery-1.11.1.js')
-    script(src='main.js')
   body
     div(style='margin-right:auto; margin-left:auto;')
-      form(action='', onsubmit='return false')
+      form(onsubmit='return false')
         #login(style='text-align:center')
           | What do we call you?
-          input#m1(style='text-align:center', autocomplete='off')
+          input#m1(style='text-align:center', autocomplete='off', placeholder='think of a username')
           input#loginButton(type='submit', value='Enter chatroom!', onclick="OnSubmit('fromLogin');")
         #logout(style='text-align:center')
           div(style='float:left')
             input(type='submit', value='Logout', onclick="OnSubmit('fromLogout');")
-        #username(style='float:right')
+          #username(style='float:right')
+        br
+        br
         #chatroom
           p
           ul#messages
-          input#m(autocomplete='off')
+          input#m(autocomplete='on', placeholder='type here')
           input#sendButton(type='submit', value='Send!', onclick="OnSubmit('fromChatWindow');")
+  script(src='/socket.io/socket.io.js')
+  script(src='jquery-2.1.4.min.js')
+  script(src='main.js')
