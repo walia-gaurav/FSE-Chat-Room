@@ -65,7 +65,7 @@
         var d = new Date(0);
         d.setUTCMilliseconds(emittedAtom.when);
 
-        var when = "<li><div style=\"color:grey; text-align:center; font-size:x-small\">" + d.toString() + "</div>";
+        var when = "<li><div style=\"color:grey; text-align:center; font-size:x-small\">" + d.toDateString() +" "+ d.toLocaleTimeString(); + "</div>";
         var who = "<div style=\"color:Red; text-align:center; font-size:x-small\">" + emittedAtom.who + "</div>";
         var what = "<div style=\"font-size:small\">" + emittedAtom.what + "</div></li>";
 

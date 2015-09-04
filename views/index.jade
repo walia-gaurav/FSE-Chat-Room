@@ -5,7 +5,7 @@ html
     meta(name='author', content='gaurav.walia@cmu.edu')
     title FSE ChatRoom
     link(rel='icon', href='images/favicon.png')
-    link(rel='stylesheet', type='text/css', href='css/style.css')
+    link(rel='stylesheet', type='text/css', href='css/styles-min.css')
   body
     div(style='margin-right:auto; margin-left:auto;')
       form(onsubmit='return false')
@@ -26,4 +26,4 @@ html
           input#sendButton(type='submit', value='Send!', onclick="OnSubmit('fromChatWindow');")
   script(src='/socket.io/socket.io.js')
   script(src='js/jquery-2.1.4.min.js')
-  script(src='js/main.js')
+  script(src='js/main-min.js')

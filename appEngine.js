@@ -17,13 +17,13 @@ app.get('/chat', function(req, res) {
     res.render('index.jade');
 });
 
-var fs = require("fs");
+var fileSystem = require("fs");
 var file = "test.db";
-var exists = fs.existsSync(file);
+var exists = fileSystem.existsSync(file);
 
 if (!exists) {
     console.log("Creating DB file.");
-    fs.openSync(file);
+    fileSystem.openSync(file);
 }
 
 var sqlite3 = require("sqlite3").verbose();
