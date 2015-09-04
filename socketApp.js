@@ -45,10 +45,11 @@ io.on('connection', function(socket) {
 
     db.serialize(function() {
 
-            if (exists) {
-        db.each("SELECT rowid AS id, thing FROM ChatHistory", function(err, row) {
-            socket.emit('inputMessage', row.thing);
-        });}
+        if (exists) {
+            db.each("SELECT rowid AS id, thing FROM ChatHistory", function(err, row) {
+                socket.emit('inputMessage', row.thing);
+            });
+        }
     });
 
     socket.on('disconnect', function() {

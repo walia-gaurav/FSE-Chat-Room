@@ -30,11 +30,14 @@
             $('#username').show();
             $('#username').text('Hi ' + $('#m1').val() + '!')
             $('#login').hide();
+            $('#messages').scrollTop($('#messages')[0].scrollHeight);
+
 
         } else if (from == "fromLogout") {
             socket.disconnect();
             showPageOne();
-        } 
+
+        }
     }
 
 
