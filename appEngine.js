@@ -9,8 +9,10 @@ var io = require('socket.io')(appServer);
 
 app.use(express.static('public'));
 
+var cors = require('cors');
+app.use(cors());
+
 app.get('/ping', function(req, res) {
-    res.render('ping.jade');
 });
 
 app.get('/chat', function(req, res) {
@@ -18,12 +20,12 @@ app.get('/chat', function(req, res) {
 });
 
 var fileSystem = require("fs");
-var file = "test.db";
+var file = "chatBackup.db";
 var exists = fileSystem.existsSync(file);
 
 if (!exists) {
-    console.log("Creating DB file.");
-    fileSystem.openSync(file);
+    console.log("Creating database file.");
+    fileSystem.openSync(file, "w");
 }
 
 var sqlite3 = require("sqlite3").verbose();
@@ -38,8 +40,8 @@ io.on('connection', function(socket) {
     console.log(socket.handshake.address + ' ' + socket.id + ' connected');
     db.serialize(function() {
         if (exists) {
-            db.each("SELECT rowid AS id, thing FROM ChatHistory", function(err, row) {
-                socket.emit('inputMessage', row.thing);
+            db.each("SELECT rowid AS id, chatAtom FROM ChatHistory", function(err, row) {
+                socket.emit('inputMessage', row.chatAtom);
             });
         }
     });
@@ -55,7 +57,7 @@ io.on('connection', function(socket) {
 
         db.serialize(function() {
             if (!exists) {
-                db.run("CREATE TABLE ChatHistory (thing TEXT)");
+                db.run("CREATE TABLE ChatHistory (chatAtom TEXT)");
             }
             var stmt = db.prepare("INSERT INTO ChatHistory VALUES (?)");
             stmt.run(msg);
